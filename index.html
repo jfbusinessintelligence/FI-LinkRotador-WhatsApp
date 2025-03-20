@@ -21,7 +21,8 @@
         const whatsappLink = `https://wa.me/${selectedNumber}`;
 
         // Guardar clic en Google Sheets
-        fetch("https://script.google.com/macros/s/AKfycbyU97huLyxoTUekG5fXKFT4GJTTTTz7TnW54XcoaoAaqCIYQsXjvJrMDSiculuXvtXZIA/exec", {
+        fetch("https://script.google.com/macros/s/AKfycbyU97huLyxoTUekG5fXKFT4GJTTTTz7TnW54XcoaoAaqCIYQsXjvJrMDSiculuXvtXZIA/exec", 
+        {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ number: selectedNumber })
