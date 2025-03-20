@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirigiendo a WhatsApp...</title>
     <script>
+        // Lista de números de WhatsApp para rotación
         const numbers = [
-            "525517976093",
-            "5493764117959",
-            "573223268648"
+            "525517976093",  // Número 1
+            "5493764117959", // Número 2
+            "573223268648"   // Número 3
         ];
 
+        // Función para determinar qué número usar según la hora
         function getRotatedIndex() {
             const now = new Date();
             const hour = now.getHours();
-            return hour < 8 ? 0 : hour < 16 ? 1 : 2;
+            return hour < 8 ? 0 : hour < 16 ? 1 : 2; // Rotación por horarios
         }
 
         const selectedNumber = numbers[getRotatedIndex()];
         const whatsappLink = `https://wa.me/${selectedNumber}`;
 
         // Guardar clic en Google Sheets
-        fetch("https://script.google.com/macros/s/AKfycbyU97huLyxoTUekG5fXKFT4GJTTTTz7TnW54XcoaoAaqCIYQsXjvJrMDSiculuXvtXZIA/exec", 
-        {
+        fetch("https://script.google.com/macros/s/AKfycbyU97huLyxoTUekG5fXKFT4GJTTTTz7TnW54XcoaoAaqCIYQsXjvJrMDSiculuXvtXZIA/exec", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ number: selectedNumber })
         });
 
+        // Redireccionar a WhatsApp
         window.location.href = whatsappLink;
     </script>
 </head>
@@ -35,3 +37,4 @@
     <h1>Redirigiendo a WhatsApp...</h1>
 </body>
 </html>
+
